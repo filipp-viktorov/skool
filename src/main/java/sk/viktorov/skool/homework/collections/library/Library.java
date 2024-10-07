@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The {@code Library} class represents a Library which manages collections of books and authors.
+ * It provides functionalities to add authors, add books to specific authors,
+ * retrieve books by authors, and retrieve the complete list of books and authors in the library.
+ */
 public class Library {
     private Map<Author, ArrayList<Book>> authorToBooks;
 
