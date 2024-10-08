@@ -36,7 +36,6 @@ public class Author {
         return Objects.hash(name, age, favouriteGenre);
     }
 
-
     @Override
     public String toString() {
         return String.format("%s (%d, %s)", name, age, favouriteGenre);

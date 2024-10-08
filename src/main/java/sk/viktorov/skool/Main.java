@@ -13,7 +13,6 @@ public class Main {
         Averager averager = new Averager();
         System.out.println(averager.calculateAverage());
 
-
         //Calculator
         Calculator calculator = new Calculator();
 
