@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PasswordVerifierTest {
-
     private PasswordVerifier passwordVerifier;
 
     private static final String PASSWORD_WITHOUT_SPACES = "password1234";
@@ -26,17 +25,17 @@ public class PasswordVerifierTest {
      * Tests the `hasGoodLength` method.
      */
     @Test
-    public void testHasGoodLength_True_WhenLengthIs12() {
+    public void should_ReturnTrue_When_LengthIs12() {
         assertTrue(passwordVerifier.hasGoodLength(PASSWORD_WITHOUT_SPACES));
     }
 
     @Test
-    public void testHasGoodLength_False_WhenLengthIsLessThan12() {
+    public void should_ReturnFalse_When_LengthIsLessThan12() {
         assertFalse(passwordVerifier.hasGoodLength(PASSWORD_SHORT));
     }
 
     @Test
-    public void testHasGoodLength_True_WhenLengthIsMoreThan12() {
+    public void should_ReturnTrue_When_LengthIsMoreThan12() {
         assertTrue(passwordVerifier.hasGoodLength(PASSWORD_LONG));
     }
 
@@ -44,12 +43,12 @@ public class PasswordVerifierTest {
      * Tests the `hasNoWhiteSpaces` method.
      */
     @Test
-    public void testHasNoWhiteSpaces_True_WhenNoSpaces() {
+    public void should_ReturnTrue_When_NoSpaces() {
         assertTrue(passwordVerifier.hasNoWhiteSpaces(PASSWORD_WITHOUT_SPACES));
     }
 
     @Test
-    public void testHasNoWhiteSpaces_False_WhenHasSpaces() {
+    public void should_ReturnFalse_When_HasSpaces() {
         assertFalse(passwordVerifier.hasNoWhiteSpaces(PASSWORD_WITH_SPACES));
     }
 
@@ -57,12 +56,12 @@ public class PasswordVerifierTest {
      * Tests the `hasNoRepetitions` method.
      */
     @Test
-    public void testHasNoRepetitions_True_WhenNoRepeats() {
+    public void should_ReturnTrue_When_NoRepeats() {
         assertTrue(passwordVerifier.hasNoRepetitions(PASSWORD_NO_REPETITION));
     }
 
     @Test
-    public void testHasNoRepetitions_False_WhenHasRepeats() {
+    public void should_ReturnFalse_When_HasRepeats() {
         assertFalse(passwordVerifier.hasNoRepetitions(PASSWORD_WITHOUT_SPACES));
     }
 
@@ -70,12 +69,12 @@ public class PasswordVerifierTest {
      * Tests the `hasNumbers` method.
      */
     @Test
-    public void testHasNumbers_True_WhenHasNumbers() {
+    public void should_ReturnTrue_When_HasNumbers() {
         assertTrue(passwordVerifier.hasNumbers(PASSWORD_WITHOUT_SPACES));
     }
 
     @Test
-    public void testHasNumbers_False_WhenNoNumbers() {
+    public void should_ReturnFalse_When_NoNumbers() {
         assertFalse(passwordVerifier.hasNumbers(PASSWORD_SHORT));
     }
 
@@ -83,12 +82,12 @@ public class PasswordVerifierTest {
      * Tests the `hasSpecialCharacter` method.
      */
     @Test
-    public void testHasSpecialCharacter_True_WhenHasSpecialCharacters() {
+    public void should_ReturnTrue_When_HasSpecialCharacters() {
         assertTrue(passwordVerifier.hasSpecialCharacter(PASSWORD_WITH_SPECIAL_CHAR));
     }
 
     @Test
-    public void testHasSpecialCharacter_False_WhenNoSpecialCharacters() {
+    public void should_ReturnFalse_When_NoSpecialCharacters() {
         assertFalse(passwordVerifier.hasSpecialCharacter(PASSWORD_WITHOUT_SPACES));
     }
 }

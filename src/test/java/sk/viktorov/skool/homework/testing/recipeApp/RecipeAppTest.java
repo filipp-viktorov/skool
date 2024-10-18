@@ -36,6 +36,9 @@ public class RecipeAppTest {
         return ingredients;
     }
 
+    /**
+     * Test the 'addRecipe' method
+     */
     @Test
     void should_AddRecipeWithIngredients_When_IngredientsProvided() {
         ArrayList<Ingredient> ingredients = createDefaultIngredients();
@@ -75,6 +78,9 @@ public class RecipeAppTest {
         assertEquals(newIngredients, recipeApp.getIngredientsOfARecipe("Pasta Carbonara"));
     }
 
+    /**
+     * Test the 'getIngredientsOfARecipe' method
+     */
     @Test
     void should_ReturnIngredients_When_RecipeIsPresent() {
         ArrayList<Ingredient> ingredients = createDefaultIngredients();
@@ -92,6 +98,9 @@ public class RecipeAppTest {
         assertEquals(new ArrayList<>(), resultIngredients);
     }
 
+    /**
+     * Test the 'deleteRecipe' method
+     */
     @Test
     void should_DeleteRecipe_When_RecipeIsPresent() {
         ArrayList<Ingredient> ingredients = createDefaultIngredients();
@@ -103,6 +112,9 @@ public class RecipeAppTest {
         assertFalse(recipeApp.isRecipePresent("Pasta Carbonara"));
     }
 
+    /**
+     * Test the 'updateRecipesIngredients' method
+     */
     @Test
     void should_UpdateRecipesIngredients_When_NewIngredientsProvided() {
         ArrayList<Ingredient> initialIngredients = createDefaultIngredients();
@@ -115,6 +127,9 @@ public class RecipeAppTest {
         assertEquals(newIngredients, recipeApp.getIngredientsOfARecipe("Pasta Carbonara"));
     }
 
+    /**
+     * Test the 'isRecipePresent' method
+     */
     @Test
     void should_CheckRecipePresence_When_RecipeNameGiven() {
         ArrayList<Ingredient> ingredients = createDefaultIngredients();

@@ -18,22 +18,22 @@ public class CalculatorTest {
      * Tests the addition functionality of the Calculator class.
      */
     @Test
-    public void add_whenCalled_addValuesCorrectly() {
+    public void should_AddValuesCorrectly_When_Called() {
         assertAddition(3.0, 2.0, 5.0);
     }
 
     @Test
-    public void add_negativeValues_addValuesCorrectly() {
+    public void should_AddValuesCorrectly_When_NegativeValuesProvided() {
         assertAddition(-3.0, -2.0, -5.0);
     }
 
     @Test
-    public void add_mixedPositiveAndNegativeValues_addValuesCorrectly() {
+    public void should_AddValuesCorrectly_When_MixedPositiveAndNegativeValuesProvided() {
         assertAddition(5.0, -3.0, 2.0);
     }
 
     @Test
-    public void add_largeNumbers_addValuesCorrectly() {
+    public void should_ReturnInfinity_When_AddingLargeNumbers() {
         double result = calculator.add(Double.MAX_VALUE, Double.MAX_VALUE);
         assertTrue(Double.isInfinite(result));
     }
@@ -47,27 +47,27 @@ public class CalculatorTest {
      * Tests the subtraction functionality of the Calculator class.
      */
     @Test
-    public void subtract_whenCalled_subtractValuesCorrectly() {
+    public void should_SubtractValuesCorrectly_When_Called() {
         assertSubtraction(5.0, 3.0, 2.0);
     }
 
     @Test
-    public void subtract_negativeValues_subtractValuesCorrectly() {
+    public void should_SubtractValuesCorrectly_When_NegativeValuesProvided() {
         assertSubtraction(-3.0, -2.0, -1.0);
     }
 
     @Test
-    public void subtract_mixedPositiveAndNegativeValues_subtractValuesCorrectly() {
+    public void should_SubtractValuesCorrectly_When_MixedPositiveAndNegativeValuesProvided() {
         assertSubtraction(5.0, -3.0, 8.0);
     }
 
     @Test
-    public void subtract_zeroAsSecondArgument_subtractValuesCorrectly() {
+    public void should_SubtractValuesCorrectly_When_SecondArgumentIsZero() {
         assertSubtraction(5.0, 0, 5.0);
     }
 
     @Test
-    public void subtract_largeNumbers_subtractValuesCorrectly() {
+    public void should_SubtractValuesCorrectly_When_LargeNumbersProvided() {
         assertSubtraction(Double.MAX_VALUE, Double.MAX_VALUE, 0.0);
     }
 
@@ -80,28 +80,28 @@ public class CalculatorTest {
      * Tests the multiplication functionality of the Calculator class.
      */
     @Test
-    public void multiply_whenCalled_multiplyValuesCorrectly() {
+    public void should_MultiplyValuesCorrectly_When_Called() {
         assertMultiplication(5.0, 3.0, 15.0);
     }
 
     @Test
-    public void multiply_negativeValues_multiplyValuesCorrectly() {
+    public void should_MultiplyValuesCorrectly_When_NegativeValuesProvided() {
         assertMultiplication(-3.0, -2.0, 6.0);
     }
 
     @Test
-    public void multiply_mixedPositiveAndNegativeValues_multiplyValuesCorrectly() {
+    public void should_MultiplyValuesCorrectly_When_MixedPositiveAndNegativeValuesProvided() {
         assertMultiplication(5.0, -3.0, -15.0);
     }
 
     @Test
-    public void multiply_largeNumbers_multiplyValuesCorrectly() {
+    public void should_ReturnInfinity_When_MultiplyingLargeNumbers() {
         double result = calculator.multiply(Double.MAX_VALUE, Double.MAX_VALUE);
         assertTrue(Double.isInfinite(result));
     }
 
     @Test
-    public void multiply_zeroAsSecondArgument_multiplyValuesCorrectly() {
+    public void should_ReturnZero_When_SecondArgumentIsZero() {
         assertMultiplication(5.0, 0, 0.0);
     }
 
@@ -114,27 +114,27 @@ public class CalculatorTest {
      * Tests the division functionality of the Calculator class.
      */
     @Test
-    public void divide_whenCalled_divideValuesCorrectly() {
+    public void should_DivideValuesCorrectly_When_Called() {
         assertDivision(10.0, 2.0, 5.0, true);
     }
 
     @Test
-    public void divide_negativeValues_divideValuesCorrectly() {
+    public void should_DivideValuesCorrectly_When_NegativeValuesProvided() {
         assertDivision(-10.0, -2.0, 5.0, true);
     }
 
     @Test
-    public void divide_mixedPositiveAndNegativeValues_divideValuesCorrectly() {
+    public void should_DivideValuesCorrectly_When_MixedPositiveAndNegativeValuesProvided() {
         assertDivision(-10.0, 2.0, -5.0, true);
     }
 
     @Test
-    public void divide_largeNumbers_divisionIsFinite() {
+    public void should_ReturnOne_When_DividingLargeNumbers() {
         assertDivision(Double.MAX_VALUE, Double.MAX_VALUE, 1.0, true);
     }
 
     @Test
-    public void divide_zeroAsSecondArgument_returnsNaN() {
+    public void should_ReturnNaN_When_SecondArgumentIsZero() {
         assertDivision(5.0, 0.0, Double.NaN, false);
     }
 

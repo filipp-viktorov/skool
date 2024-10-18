@@ -14,12 +14,12 @@ public class AveragerTest {
     private static final double EXPECTED_AVERAGE_VALID_INPUTS = Arrays.stream(VALID_INPUTS).sum() / VALID_INPUTS.length;
 
     @Test
-    public void shouldReturnCorrectAverageForValidInputs() {
+    public void should_ReturnCorrectAverage_When_InputsAreValid() {
         testCalculateAverage(VALID_INPUTS, EXPECTED_AVERAGE_VALID_INPUTS);
     }
 
     @Test
-    public void shouldReturnZeroForZeroInputs() {
+    public void should_ReturnZero_When_InputsAreZero() {
         testCalculateAverage(ZERO_INPUTS, EXPECTED_AVERAGE_ZERO_INPUTS);
     }
 

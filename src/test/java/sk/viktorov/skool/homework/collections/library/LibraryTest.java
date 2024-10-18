@@ -45,6 +45,9 @@ public class LibraryTest {
         }
     }
 
+    /**
+     * Test the 'getBooksOfAuthor' method.
+     */
     @Test
     public void should_ReturnBooks_When_AuthorExists() {
         ArrayList<Book> expectedBooks = createBooks(
@@ -75,6 +78,9 @@ public class LibraryTest {
         assertBooks(expectedBooks, actualBooks);
     }
 
+    /**
+     * Test the 'addBookToAuthor' method.
+     */
     @Test
     public void should_AddBook_When_AuthorExists() {
         Book expectedBook = new Book("The Stand", "Horror", 1300);
@@ -93,6 +99,9 @@ public class LibraryTest {
         assertTrue(library.getBooksOfAuthor("Leo Tolstoy").isEmpty());
     }
 
+    /**
+     * Test the 'getAllAuthors' method.
+     */
     @Test
     public void should_ReturnAllAuthors_When_Requested() {
         ArrayList<Author> actualAuthors = library.getAllAuthors();
@@ -104,6 +113,9 @@ public class LibraryTest {
         assertArrayEquals(expectedAuthors.toArray(), actualAuthors.toArray());
     }
 
+    /**
+     * Test the 'getAllBooks' method.
+     */
     @Test
     public void should_ReturnAllBooks_When_Requested() {
         ArrayList<Book> expectedBooks = createBooks(
@@ -118,6 +130,9 @@ public class LibraryTest {
         assertBooks(expectedBooks, actualBooks);
     }
 
+    /**
+     * Test the 'getAllBooksAndAuthors' method.
+     */
     @Test
     public void should_ReturnAllBooksAndAuthors_When_Requested() {
         Map<Author, ArrayList<Book>> expectedBooksAndAuthors = new HashMap<>();
@@ -125,10 +140,8 @@ public class LibraryTest {
                 new Book("The Dark Tower", "Adventure", 1000),
                 new Book("It", "Horror", 400),
                 new Book("The Green Mile", "Fantasy", 200)));
-
         expectedBooksAndAuthors.put(new Author("Lee Child", 69, "Detective"), createBooks(
                 new Book("Jack Richer", "Detective", 96)));
-
         expectedBooksAndAuthors.put(new Author("Ray Bradbury", 91, "Mystery"), createBooks(
                 new Book("Fahrenheit 451", "Fantasy", 451)));
 
