@@ -14,30 +14,6 @@ public class CalculatorTest {
         calculator = new Calculator();
     }
 
-    private void assertAddition(double a, double b, double expected) {
-        double result = calculator.add(a, b);
-        assertEquals(expected, result);
-    }
-
-    private void assertSubtraction(double a, double b, double expected) {
-        double result = calculator.subtract(a, b);
-        assertEquals(expected, result);
-    }
-
-    private void assertMultiplication(double a, double b, double expected) {
-        double result = calculator.multiply(a, b);
-        assertEquals(expected, result);
-    }
-
-    private void assertDivision(double a, double b, double expected, boolean isFinite) {
-        double result = calculator.divide(a, b);
-        if (isFinite) {
-            assertEquals(expected, result);
-        } else {
-            assertTrue(Double.isNaN(result) || Double.isFinite(result));
-        }
-    }
-
     /**
      * Tests the addition functionality of the Calculator class.
      */
@@ -60,6 +36,11 @@ public class CalculatorTest {
     public void add_largeNumbers_addValuesCorrectly() {
         double result = calculator.add(Double.MAX_VALUE, Double.MAX_VALUE);
         assertTrue(Double.isInfinite(result));
+    }
+
+    private void assertAddition(double a, double b, double expected) {
+        double result = calculator.add(a, b);
+        assertEquals(expected, result);
     }
 
     /**
@@ -88,6 +69,11 @@ public class CalculatorTest {
     @Test
     public void subtract_largeNumbers_subtractValuesCorrectly() {
         assertSubtraction(Double.MAX_VALUE, Double.MAX_VALUE, 0.0);
+    }
+
+    private void assertSubtraction(double a, double b, double expected) {
+        double result = calculator.subtract(a, b);
+        assertEquals(expected, result);
     }
 
     /**
@@ -119,6 +105,11 @@ public class CalculatorTest {
         assertMultiplication(5.0, 0, 0.0);
     }
 
+    private void assertMultiplication(double a, double b, double expected) {
+        double result = calculator.multiply(a, b);
+        assertEquals(expected, result);
+    }
+
     /**
      * Tests the division functionality of the Calculator class.
      */
@@ -145,5 +136,14 @@ public class CalculatorTest {
     @Test
     public void divide_zeroAsSecondArgument_returnsNaN() {
         assertDivision(5.0, 0.0, Double.NaN, false);
+    }
+
+    private void assertDivision(double a, double b, double expected, boolean isFinite) {
+        double result = calculator.divide(a, b);
+        if (isFinite) {
+            assertEquals(expected, result);
+        } else {
+            assertTrue(Double.isNaN(result) || Double.isFinite(result));
+        }
     }
 }
