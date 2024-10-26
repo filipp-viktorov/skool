@@ -13,17 +13,20 @@ public class FileHandler {
 
     public void printDirectory(String directoryPath) {
         File directory = new File(directoryPath);
-        if (directory.isDirectory()) {
-            File[] files = directory.listFiles();
-            if (files != null) {
-                for (File file : files) {
-                    System.out.println(file.getName());
-                }
-            } else {
-                System.out.println("The directory is empty.");
-            }
-        } else {
+        if (!directory.isDirectory()) {
             System.out.println("The path provided is not a directory.");
+            return;
+        }
+
+        File[] files = directory.listFiles();
+
+        if (files == null || files.length == 0) {
+            System.out.println("The directory is empty.");
+            return;
+        }
+
+        for (File file : files) {
+            System.out.println(file.getName());
         }
     }
 
@@ -34,18 +37,8 @@ public class FileHandler {
             System.out.print("Enter content: ");
             String content = reader.readLine();
 
-            String[] words = content.split(" ");
-            StringBuilder formattedContent = new StringBuilder();
-            for (int i = 0; i < words.length; i++) {
-                formattedContent.append(words[i]);
-                if ((i + 1) % 4 == 0) {
-                    formattedContent.append("\n");
-                } else {
-                    formattedContent.append(" ");
-                }
-            }
-
-            Files.write(Paths.get(fileName), formattedContent.toString().getBytes());
+            String formattedContent = formatContent(content);
+            Files.write(Paths.get(fileName), formattedContent.getBytes());
 
             readFromFile(fileName);
 
@@ -56,12 +49,24 @@ public class FileHandler {
         }
     }
 
-    public void readFromFile(String fileName) {
+    private String formatContent(String content) {
+        String[] words = content.split(" ");
+        StringBuilder formattedContent = new StringBuilder();
+        for (int i = 0; i < words.length; i++) {
+            formattedContent.append(words[i]);
+            if ((i + 1) % 4 == 0) {
+                formattedContent.append("\n");
+            } else {
+                formattedContent.append(" ");
+            }
+        }
+        return formattedContent.toString();
+    }
+
+    private void readFromFile(String fileName) {
         try {
             List<String> lines = Files.readAllLines(Paths.get(fileName));
-            for (String line : lines) {
-                System.out.println(line);
-            }
+            lines.forEach(System.out::println);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -71,7 +76,6 @@ public class FileHandler {
         try {
             List<String> file1Lines = Files.readAllLines(Paths.get(filePath1));
             List<String> file2Lines = Files.readAllLines(Paths.get(filePath2));
-
             return file1Lines.equals(file2Lines);
         } catch (IOException e) {
             e.printStackTrace();
@@ -87,9 +91,8 @@ public class FileHandler {
                 invertedLines.add(new StringBuilder(line).reverse().toString());
             }
 
-            String invertedFilePath = "inverted_" + Paths.get(filepath).getFileName().toString();
+            String invertedFilePath = "inverted_" + Paths.get(filepath).getFileName();
             Files.write(Paths.get(invertedFilePath), invertedLines);
-
             return true;
         } catch (IOException e) {
             e.printStackTrace();
