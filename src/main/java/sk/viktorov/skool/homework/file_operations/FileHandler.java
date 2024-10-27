@@ -15,14 +15,12 @@ public class FileHandler {
         File directory = new File(directoryPath);
         if (!directory.isDirectory()) {
             System.out.println("The path provided is not a directory.");
-            return;
         }
 
         File[] files = directory.listFiles();
 
         if (files == null || files.length == 0) {
             System.out.println("The directory is empty.");
-            return;
         }
 
         for (File file : files) {
@@ -44,7 +42,7 @@ public class FileHandler {
 
             return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("An error occurred while writing user input to file: " + e.getMessage());
             return false;
         }
     }
@@ -60,7 +58,7 @@ public class FileHandler {
                 formattedContent.append(" ");
             }
         }
-        return formattedContent.toString();
+        return formattedContent.toString().trim();
     }
 
     private void readFromFile(String fileName) {
@@ -68,7 +66,7 @@ public class FileHandler {
             List<String> lines = Files.readAllLines(Paths.get(fileName));
             lines.forEach(System.out::println);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("An error occurred while reading from file: " + fileName + e.getMessage());
         }
     }
 
@@ -78,7 +76,7 @@ public class FileHandler {
             List<String> file2Lines = Files.readAllLines(Paths.get(filePath2));
             return file1Lines.equals(file2Lines);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("An error occurred while comparing files: " + e.getMessage());
             return false;
         }
     }
@@ -95,7 +93,7 @@ public class FileHandler {
             Files.write(Paths.get(invertedFilePath), invertedLines);
             return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("An error occurred while inverting file: " + e.getMessage());
             return false;
         }
     }
